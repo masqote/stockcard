@@ -15,4 +15,4 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'StockController@index');
+Route::get('/', 'StockController@home');
