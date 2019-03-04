@@ -16,3 +16,6 @@
 // });
 
 Route::get('/', 'StockController@home');
+
+Route::get('/master_code', 'StockController@master_code');
+Route::post('/master_code', 'StockController@master_code_store');
