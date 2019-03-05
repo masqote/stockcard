@@ -40,7 +40,7 @@
 									  <div class="form-row">
 									    <div class="form-group col-md-8">
 									      <label for="inputState">Item</label>
-									      <select name="itemCode" id="itemCode" class="form-control" style="width:100%">
+									      <select name="itemCode[]" id="itemCode" class="form-control" style="width:100%">
 									        <option selected>Choose...</option>
 									        @foreach($item as $row)
 									        <option value="{{$row->item_code}}">{{$row->item_code}} - {{$row->item_name}}</option>
@@ -49,7 +49,7 @@
 									    </div>
 									    <div class="form-group col-md-2">
 									      <label for="inputZip">Qty</label>
-									      <input type="number" class="form-control" autocomplete="off">
+									      <input type="number" class="form-control" name="qty[]" autocomplete="off">
 									    </div>
 									    <div class="form-group col-md-1">
 									      <label for="inputZip">Add</label>
@@ -90,7 +90,7 @@
 									<div class="form-row">
 									    <div class="form-group col-md-8">
 									      <label for="inputState">Item</label>
-									      <select name="itemCode" id="itemCode" class="form-control" style="width:100%">
+									      <select name="itemCode[]" id="itemCode" class="form-control" style="width:100%">
 									        <option selected>Choose...</option>
 									        @foreach($item as $row)
 									        <option value="{{$row->item_code}}">{{$row->item_code}} - {{$row->item_name}}</option>
@@ -99,7 +99,7 @@
 									    </div>
 									    <div class="form-group col-md-2">
 									      <label for="inputZip">Qty</label>
-									      <input type="number" class="form-control" autocomplete="off">
+									      <input type="number" class="form-control" name="qty[]" autocomplete="off">
 									    </div>
 									    <div class="form-group col-md-1 tes">
 									    <label for="inputZip">Del</label>
