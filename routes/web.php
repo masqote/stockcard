@@ -16,6 +16,11 @@
 // });
 
 Route::get('/', 'StockController@home');
-
+// Master Code
 Route::get('/master_code', 'StockController@master_code');
 Route::post('/master_code', 'StockController@master_code_store');
+// Group Master Code
+Route::get('/group_master_code', 'StockController@group_master_code');
+Route::post('/group_master_code', 'StockController@group_master_code_store');
+// Purchasing
+Route::get('/purchasing', 'StockController@purchasing');

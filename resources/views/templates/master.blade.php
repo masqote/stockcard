@@ -28,6 +28,9 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
+    <!-- Search Option -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -292,6 +295,14 @@
                       </a>
                   </li>
 
+                  <li>
+                      <a href="/purchasing">
+                          <i class="fa fa-money"></i>
+                          <span>Purchasing</span>
+                      </a>
+                  </li>
+
+
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-gear"></i>
@@ -299,7 +310,7 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="master_code">Master Code</a></li>
-                          <li><a  href="horizontal_menu.html">Horizontal Menu</a></li>
+                          <li><a  href="group_master_code">Group Master Code</a></li>
                           <li><a  href="language_switch_bar.html">Language Switch Bar</a></li>
                           <li><a  href="email_template.html" target="_blank">Email Template</a></li>
                       </ul>
@@ -341,6 +352,10 @@
 
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
+
+    <!-- search option -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js"></script>
 
     <!--script for this page-->
     <script src="js/sparkline-chart.js"></script>
