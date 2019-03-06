@@ -13,20 +13,25 @@
     <meta name="description" content="">
     <meta name="author" content="Mosaddek">
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="http://stockcard.test/img/favicon.png">
 
     <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="http://stockcard.test/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://stockcard.test/css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+    <link href="http://stockcard.test/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="http://stockcard.test/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="http://stockcard.test/css/owl.carousel.css" type="text/css">
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="http://stockcard.test/css/style.css" rel="stylesheet">
+    <link href="http://stockcard.test/css/style-responsive.css" rel="stylesheet" />
+
+    <!-- datatable -->
+    <link href="http://stockcard.test/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="http://stockcard.test/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://stockcard.test/assets/data-tables/DT_bootstrap.css" />
 
     <!-- Search Option -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
@@ -302,6 +307,13 @@
                       </a>
                   </li>
 
+                  <li>
+                      <a href="/warehouse">
+                          <i class="fa fa-archive"></i>
+                          <span>Warehouse</span>
+                      </a>
+                  </li>
+
 
                   <li class="sub-menu">
                       <a href="javascript:;" >
@@ -338,29 +350,34 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="js/jquery.sparkline.js" type="text/javascript"></script>
-    <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-    <script src="js/owl.carousel.js" ></script>
-    <script src="js/jquery.customSelect.min.js" ></script>
-    <script src="js/respond.min.js" ></script>
+    <script src="http://stockcard.test/js/jquery.js"></script>
+    <script src="http://stockcard.test/js/jquery-1.8.3.min.js"></script>
+    <script src="http://stockcard.test/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="http://stockcard.test/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="http://stockcard.test/js/jquery.scrollTo.min.js"></script>
+    <script src="http://stockcard.test/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="http://stockcard.test/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="http://stockcard.test/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="http://stockcard.test/js/owl.carousel.js" ></script>
+    <script src="http://stockcard.test/js/jquery.customSelect.min.js" ></script>
+    <script src="http://stockcard.test/js/respond.min.js" ></script>
 
     <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
+    <script src="http://stockcard.test/js/common-scripts.js"></script>
+
+    <!-- datatable -->
+    <!-- <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.js"></script> -->
+    <script type="text/javascript" language="javascript" src="assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
 
     <!-- search option -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js"></script>
 
     <!--script for this page-->
-    <script src="js/sparkline-chart.js"></script>
-    <script src="js/easy-pie-chart.js"></script>
-    <script src="js/count.js"></script>
+    <script src="http://stockcard.test/js/sparkline-chart.js"></script>
+    <script src="http://stockcard.test/js/easy-pie-chart.js"></script>
+    <script src="http://stockcard.test/js/count.js"></script>
 
   <script>
 

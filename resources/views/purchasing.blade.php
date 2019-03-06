@@ -9,16 +9,27 @@
 	                          <header class="panel-heading">
 	                              Purchasing Stock Card
 	                          </header>
+	                          @if(session()->has('success'))
+									    <div class="alert alert-success">
+									        {{ session()->get('success') }}
+									    </div>
+								@endif
 	                          <div class="panel-body">
-	                              <form>
+	                              <form action="/purchasing" method="post">
 									  <div class="form-row">
 									    <div class="form-group col-md-6">
 									      <label for="inputEmail4">PO Number</label>
 									      <input type="text" class="form-control" id="poNumber" name="poNumber" placeholder="PO Number">
 									    </div>
 									    <div class="form-group col-md-6">
+									      <label for="inputEmail4">Supplier Name</label>
+									      <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Supplier Name">
+									    </div>
+									   </div>
+									   <div class="form-row">
+									    <div class="form-group col-md-6">
 									      <label for="inputPassword4">Date</label>
-									      <span class="form-control" style="background: black; color: yellow;">
+									      <span class="form-control" style="background: black; color: yellow; text-align: center;">
 									      	
 									      	<script>
 									      		var d = new Date();
@@ -35,6 +46,15 @@
 									      	</script>
 
 									      </span>
+									    </div>
+									    <div class="form-group col-md-6">
+									      <label for="inputEmail4">Location</label>
+									      <select class="form-control" name="location" id="location">
+									      	<option selected>Choose...</option>
+									      	<option value="Kadus">Kadus</option>
+									      	<option value="Manado">Manado</option>
+									      	<option value="Carat">Carat</option>
+									      </select>
 									    </div>
 									  </div>
 									  <div class="form-row">
@@ -62,11 +82,18 @@
 
 
 									  </div>
+									  <div class="form-row">
+									    <div class="form-group col-md-12">
+									      <label for="inputEmail4">Remarks</label>
+									      <textarea class="form-control" name="remarks" id="remarks"></textarea>
+									    </div>
+									   </div>
 									<div class="form-row">
 										<div class="form-group col-md-8">
-									  		<button type="submit" class="btn btn-primary">Sign in</button>
+									  		<button type="submit" class="btn btn-primary">Submit</button>
 									  	</div>
 									</div>
+									{{ csrf_field() }}
 									</form>
 
 	                          </div>
@@ -76,7 +103,7 @@
         </section>
     </section>
 
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="http://stockcard.test/js/jquery-1.8.3.min.js"></script>
 
 <script>
 	$(document).ready(function(){

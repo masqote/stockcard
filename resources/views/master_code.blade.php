@@ -60,20 +60,42 @@
 	                             <b> Master Code</b>
 	                          </header>
 	                          <div class="panel-body">
-	                          		<table class="table table-striped">
-	                          			<tr>
-	                          				<th>Group</th>
-	                          				<th>Item Code</th>
-	                          				<th>Item Name</th>
-	                          			</tr>
-	                          			@foreach($masterCode as $row)
-	                          			<tr>
-	                          				<td>{{$row->name_group}}</td>
-	                          				<td>{{$row->item_code}}</td>
-	                          				<td>{{$row->item_name}}</td>
-	                          			</tr>
-	                          			@endforeach
-	                          		</table>
+	                          		<div class="adv-table">
+                                    <table  class="display table table-bordered table-striped" id="example">
+                                      <thead>
+                                      <tr>
+                                      	  <th>No</th>
+                                          <th>Item Code</th>
+                                          <th>Item Name</th>
+                                          <th>Group</th>
+                                          <th>UoM</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                      	@php
+                                      		$no = 1;
+                                      	@endphp
+                                      	@foreach($masterCode as $row)
+                                      <tr class="gradeX">
+                                      	  <td>{{$no++}}</td>
+                                          <td>{{$row->item_code}}</td>
+                                          <td>{{$row->item_name}}</td>
+                                          <td>{{$row->name_group}}</td>
+                                          <td>{{$row->uom}}</td>
+                                      </tr>
+                                      	@endforeach
+                                      </tbody>
+                                      <tfoot>
+                                      <tr>
+                                      	  <th>No</th>
+                                          <th>Item Code</th>
+                                          <th>Item Name</th>
+                                          <th>Group</th>
+                                          <th>UoM</th>
+                                      </tr>
+                                      </tfoot>
+                          </table>
+                                </div>
 	                          </div>
 	                       </section>
 	            </div>
@@ -82,5 +104,12 @@
     	</section>
     </section>
 
-
+<script src="http://stockcard.test/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+          $(document).ready(function() {
+              $('#example').dataTable( {
+                  "aaSorting": [[ 0, "desc" ]]
+              } );
+          } );
+</script>
 @endsection

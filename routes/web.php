@@ -24,3 +24,7 @@ Route::get('/group_master_code', 'StockController@group_master_code');
 Route::post('/group_master_code', 'StockController@group_master_code_store');
 // Purchasing
 Route::get('/purchasing', 'StockController@purchasing');
+Route::post('/purchasing', 'StockController@purchasing_store');
+// warehouse
+Route::get('/warehouse', 'StockController@warehouse');
+Route::get('/warehouse/{po_number}', 'StockController@warehouse_view');

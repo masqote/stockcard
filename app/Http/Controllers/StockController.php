@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\MasterCode;
 use App\GroupMasterCode;
 use App\Purchasing;
+use App\DetailPurchasing;
 
 class StockController extends Controller
 {
@@ -77,5 +78,61 @@ class StockController extends Controller
         $item = MasterCode::all();
 
         return view('purchasing', compact('item'));
+    }
+
+    public function purchasing_store(Request $request){
+
+        // insert to purchasing_detail
+        $c = count($request->itemCode);
+        for ($x=0; $x < $c; $x++) { 
+            $detailPurchasing = new DetailPurchasing;
+            $detailPurchasing->po_number = $request->poNumber;
+            $detailPurchasing->item_code = $request->itemCode[$x];
+            $detailPurchasing->qty = $request->qty[$x];
+            $detailPurchasing->save();
+        }
+
+
+        // insert to purchasing
+        $purchasing = new Purchasing;
+        $purchasing->po_number = $request->poNumber;
+        $purchasing->date_purchasing = now();
+        $purchasing->supplier_name = $request->supplierName;
+        $purchasing->location = $request->location;
+        $purchasing->remarks = $request->remarks;
+        $purchasing->save();
+
+        return redirect()->back()->with('success', 'Success!');
+
+    }
+
+
+
+    // Warehouse Controller
+
+    public function warehouse(){
+
+        $warehouse = Purchasing::all();
+
+        return view('warehouse', compact('warehouse'));
+
+    }
+
+    public function warehouse_view($po_number){
+
+        
+        $purchasing = DB::table('purchasing')
+                    ->where('po_number', $po_number)
+                    ->first();
+
+        $warehouse = DB::table('purchasing')
+                    ->join('detail_purchasing' , 'purchasing.po_number', 'detail_purchasing.po_number')
+                    ->join('master_code', 'detail_purchasing.item_code', 'master_code.item_code')
+                    ->where('purchasing.po_number', $po_number)
+                    ->get()
+                    ->toArray();
+
+        return view('warehouse_view', compact('warehouse' , 'purchasing'));
+
     }
 }
