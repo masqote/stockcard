@@ -28,3 +28,4 @@ Route::post('/purchasing', 'StockController@purchasing_store');
 // warehouse
 Route::get('/warehouse', 'StockController@warehouse');
 Route::get('/warehouse/{po_number}', 'StockController@warehouse_view');
+Route::post('/warehouse/{po_number}', 'StockController@warehouse_store');

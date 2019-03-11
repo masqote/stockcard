@@ -11,6 +11,7 @@ use App\MasterCode;
 use App\GroupMasterCode;
 use App\Purchasing;
 use App\DetailPurchasing;
+use App\Transaction;
 
 class StockController extends Controller
 {
@@ -132,7 +133,38 @@ class StockController extends Controller
                     ->get()
                     ->toArray();
 
-        return view('warehouse_view', compact('warehouse' , 'purchasing'));
+        $transaction = DB::table('transaction')
+                    ->get()
+                    ->where('po_number_transaction', $po_number)
+                    ->toArray();
+
+        $sum = Transaction::select(DB::raw('sum(qty_transaction) as total'))->groupBy('item_code_transaction')
+        ->where([
+            ['po_number_transaction', "=" , $po_number]
+        ])
+        ->get();
+
+
+
+        return view('warehouse_view', compact('warehouse' , 'purchasing', 'transaction', 'sum'));
+
+    }
+
+    public function warehouse_store(Request $request){
+
+        $transaction = new Transaction();
+
+        $transaction->po_number_transaction = $request->poNumber;
+        $transaction->date_transaction = now();
+        $transaction->item_code_transaction = $request->itemCode;
+        $transaction->qty_transaction = $request->actualReceive;
+        $transaction->surat_jalan = $request->suratJalan;
+        $transaction->tanda_terima = $request->tandaTerima;
+        $transaction->invoice_number = $request->invoiceNumber;
+
+        $transaction->save();
+
+        return redirect()->back()->with('success', 'Success!');
 
     }
 }
