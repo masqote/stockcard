@@ -78,8 +78,7 @@
 									  </div>
 
 									  <div id="add_field">
-									  	
-
+									  
 
 									  </div>
 									  <div class="form-row">
@@ -93,6 +92,7 @@
 									  		<button type="submit" class="btn btn-primary">Submit</button>
 									  	</div>
 									</div>
+
 									{{ csrf_field() }}
 									</form>
 
@@ -101,16 +101,21 @@
 	                  	</div>	
               </div>
         </section>
+
     </section>
 
 <script src="http://stockcard.test/js/jquery-1.8.3.min.js"></script>
 
 <script>
-	$(document).ready(function(){
-
+	$(document).ready(function(e){
 		$(function () {
 	  		$("select").select2();
 		});
+	$('select[name*="itemCode"]').change(function(){
+
+    // start by setting everything to enabled
+    $('select[name*="itemCode"] option').attr('disabled',false);
+    
 		var i=1;  
 		$("#add").click(function(){
 			$("#add_field").append(`
@@ -132,24 +137,33 @@
 									    <label for="inputZip">Del</label>
 									    <button type="button" name="remove" id="remove" class="btn btn-danger">X</button>
 									    </div>
-									  </div>
+									</div>
 
 			`);
 
-				$(function () {
+		// loop each select and set the selected value to disabled in all other selects
+	    $('select[name*="itemCode"]').each(function(){
+	        var $this = $(this);
+	        $('select[name*="itemCode"]').not($this).find('option').each(function(){
+	           if($(this).attr('value') == $this.val())
+	               $(this).attr('disabled',true);
+	        });
+	    });
+
+	    	// search canggih
+			$(function () {
 		  		$("select").select2();
 			});
 		});
 
+		// Remove div append on click
 		$('#add_field').on('click', '.tes', function(e) {
 		    e.preventDefault();
 
 		    $(this).parent().remove();
 		});
-
+	});
 });
-
-	
 
 </script>
 
