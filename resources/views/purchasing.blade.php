@@ -19,7 +19,7 @@
 									  <div class="form-row">
 									    <div class="form-group col-md-6">
 									      <label for="inputEmail4">PO Number</label>
-									      <input type="text" class="form-control" id="poNumber" name="poNumber" placeholder="PO Number">
+									      <input type="text" required="" class="form-control" id="poNumber" name="poNumber" placeholder="PO Number">
 									    </div>
 									    <div class="form-group col-md-6">
 									      <label for="inputEmail4">Supplier Name</label>

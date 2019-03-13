@@ -46,9 +46,6 @@ class StockController extends Controller
 			}else{
 				return redirect()->back()->with('message', 'Error! Detected Same Item!');
 			}
-
-    	
-
     }
 
 
