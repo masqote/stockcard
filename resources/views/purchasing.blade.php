@@ -60,7 +60,7 @@
 									  <div class="form-row">
 									    <div class="form-group col-md-8">
 									      <label for="inputState">Item</label>
-									      <select name="itemCode[]" id="itemCode" class="form-control" style="width:100%">
+									      <select name="itemCode[]" id="item_id" class="form-control" style="width:100%">
 									        <option selected>Choose...</option>
 									        @foreach($item as $row)
 									        <option value="{{$row->item_code}}">{{$row->item_code}} - {{$row->item_name}}</option>
@@ -105,12 +105,18 @@
 
 <script src="http://stockcard.test/js/jquery-1.8.3.min.js"></script>
 
-<script>
-	$(document).ready(function(){
 
+
+<script>
+	$(document).ready(function(e){
 		$(function () {
 	  		$("select").select2();
 		});
+	$('select[name*="itemCode"]').change(function(){
+
+    // start by setting everything to enabled
+    $('select[name*="itemCode"] option').attr('disabled',false);
+    
 		var i=1;  
 		$("#add").click(function(){
 			$("#add_field").append(`
@@ -118,6 +124,78 @@
 									    <div class="form-group col-md-8">
 									      <label for="inputState">Item</label>
 									      <select name="itemCode[]" id="itemCode" class="form-control" style="width:100%">
+									        <option selected>Choose...</option>
+									        @foreach($item as $row)
+									        <option value="{{$row->item_code}}">{{$row->item_code}} - {{$row->item_name}}</option>
+									        @endforeach
+									      </select>
+									    </div>
+									    <div class="form-group col-md-2">
+									      <label for="inputZip">Qty</label>
+									      <input type="number" class="form-control" name="qty[]" autocomplete="off">
+									    </div>
+									    <div class="form-group col-md-1 tes">
+									    <label for="inputZip">Del</label>
+									    <button type="button" name="remove" id="remove" class="btn btn-danger">X</button>
+									    </div>
+									</div>
+
+			`);
+
+		// loop each select and set the selected value to disabled in all other selects
+	    $('select[name*="itemCode"]').each(function(){
+	        var $this = $(this);
+	        $('select[name*="itemCode"]').not($this).find('option').each(function(){
+	           if($(this).attr('value') == $this.val())
+	               $(this).attr('disabled',true);
+	        });
+	    });
+
+	    	// search canggih
+			$(function () {
+		  		$("select").select2();
+			});
+		});
+
+		// Remove div append on click
+		$('#add_field').on('click', '.tes', function(e) {
+		    e.preventDefault();
+
+		    $(this).parent().remove();
+		});
+	});
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
+	$(document).ready(function(){
+
+
+		$(function () {
+	  		$("select").select2();
+		});
+
+
+		var i=1;  
+		$("#add").click(function(){
+			$("#add_field").append(`
+									<div class="form-row">
+									    <div class="form-group col-md-8">
+									      <label for="inputState">Item</label>
+									      <select name="itemCode[]" id="item_id" class="form-control" style="width:100%">
 									        <option selected>Choose...</option>
 									        @foreach($item as $row)
 									        <option value="{{$row->item_code}}">{{$row->item_code}} - {{$row->item_name}}</option>
@@ -151,6 +229,6 @@
 
 	
 
-</script>
+</script> -->
 
 @endsection

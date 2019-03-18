@@ -45,20 +45,57 @@
 	                                  </div>
 	                          		</div>
 	                          		
+
+                          				@php
+                                  		$no = 0;
+                                  		$qq	= COUNT($transaction)
+	                                  	@endphp
+
+	                                  	@foreach($transaction as $row)
+	                                  	
+	                                  	@php
+	                                      $item_code[$no] = $row->item_code_transaction;
+	                                      $qty_transac[$no] = $row->qty_transaction;
+	                                      $no++;
+                                      	@endphp
+                                  		@endforeach
+
+
 	                          		<div class="col-md-6">
 	                          			<h1><b><u>List item</u></b></h1>
 	                                  <div class="row">
 	                                      <ul class="list-group">
 	                                      	@foreach($warehouse as $row)
+	                                      		
+	                                      		
 	                                      		<li class="list-group-item">
+	                                      		@php
+
+		                                      		$r = 0;
+		                                      		$nonal = 0;
+		                                      		while($r < $qq)
+		                                      		{
+		                                      			if($row->item_code == $item_code[$r])
+		                                      			{
+		                                      				
+		                                      				$nonal += $qty_transac[$r];
+
+		                                      			}
+	                                      			$r++;
+		                                      		}
+	                                      		
+	                                      		@endphp
+	                                      			<br /><br /><br />
 	                                      			{{$row->item_code}} - {{$row->item_name}}
 	                                      			<span class="badge" style="background: green;">{{$row->qty}}</span>
 	                                      			<br><br>
 	                                      			<label class="col-sm-4">Less Receive :</label>
 	                                      			<div class="col-sm-4">
-	                                      			<span class="label label-danger">123</span>
+	                                      			<span class="label label-danger" id="less">{{$row->qty - $nonal}}</span>
 	                                      			</div><br>
 	                                      		</li>
+	                                      		
+	                                      		
 	                                      	@endforeach
 	                                      </ul>
 	                                  </div>
@@ -183,9 +220,42 @@
                                                   </div>
                                               	</div>
                                               	<div class="col-lg-6">
+                                              		@foreach($warehouse as $row)
+                                              		@php
+
+		                                      		$r = 0;
+		                                      		$nonal = 0;
+		                                      		while($r < $qq)
+		                                      		{
+		                                      			if($row->item_code == $item_code[$r])
+		                                      			{
+		                                      				
+		                                      				$nonal += $qty_transac[$r];
+
+		                                      			}
+	                                      			$r++;
+		                                      		}
+	                                      		
+	                                      			@endphp
+	                                      			@endforeach
                                                   <div class="form-group">
                                                       <label for="exampleInputPassword1">Actual Receive</label>
-                                                      <input type="number"  name="actualReceive" min="0" class="form-control" id="exampleInputPassword3" placeholder="Actual Receive">
+                                                      <input type="number"  name="actualReceive" min="0" class="form-control" id="input1" step="any" oninput="check(this)" placeholder="Actual Receive">
+
+
+                                                      <script type="text/javascript">
+                                                      	
+                                                      		var data = $(this).attr("less");
+                                                      		function check (input) {
+                                                      			if (input.value > data) {
+                                                      				input.SetCustomValidity("The number should be lower than this");
+                                                      			} else {
+                                                      				input.SetCustomValidity('');
+                                                      			}
+                                                      		}
+
+                                                      </script>
+
                                                   </div>
                                               	</div>
                                             </div>
