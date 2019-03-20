@@ -112,11 +112,29 @@ class StockController extends Controller
 
         $warehouse = Purchasing::all();
 
-        return view('warehouse', compact('warehouse'));
+        //sum transaction group by pake po_number =  INI DATA BERDASARKAN INPUTAN ADMIN WAREHOUSE
+        $sumtrans = Transaction::select(DB::raw('transaction.po_number_transaction ,sum(qty_transaction) as total'))
+        ->join('purchasing', 'transaction.po_number_transaction', "=", 'purchasing.po_number')
+        ->groupBy('transaction.po_number_transaction')
+        ->get();
+
+        //sum detail_purchasing group by pake po_number = INI DATA REAL
+        $sumdetail = DetailPurchasing::select(DB::raw('sum(qty) as total'))
+        ->join('purchasing', 'detail_purchasing.po_number', "=", 'purchasing.po_number')
+        ->groupBy('detail_purchasing.po_number')
+        ->get();
+
+        
+        
+        
+
+        return view('warehouse', compact('warehouse', 'sumtrans', 'sumdetail'));
 
     }
 
     public function warehouse_view($po_number){
+
+
 
         
         $purchasing = DB::table('purchasing')
@@ -143,12 +161,42 @@ class StockController extends Controller
 
 
 
-        return view('warehouse_view', compact('warehouse' , 'purchasing', 'transaction', 'sum'));
+        return view('warehouse_view', compact('warehouse' , 'purchasing', 'transaction', 'sum', 'sumtrans'));
 
     }
 
     public function warehouse_store(Request $request){
 
+        $sumtrans = Transaction::select(DB::raw('sum(qty_transaction) as total'))
+        ->where([
+            ['po_number_transaction', "=", $request->poNumber],
+            ['item_code_transaction', "=", $request->itemCode]
+        ])
+        ->first();
+
+        $check = DB::table('detail_purchasing')
+        ->select('qty')
+        ->where([
+            ['po_number', "=" , $request->poNumber],
+            ['item_code', "=", $request->itemCode]
+        ])
+        ->first();
+
+        $total1 = $sumtrans->total;
+        $total2 = $check->qty;
+
+       
+        // ->join('detail_purchasing', 'transaction.po_number_transaction' , "=", 'detail_purchasing.po_number')
+        // ->join('transaction', 'transaction.item_code', "=", 'detail_purchasing.item_code')
+        // ->where([
+        //     ['transaction.po_number_transaction', "=" , $request->poNumber],
+        //     ['transaction.item_code_transaction', "=", $request->itemCode]
+        // ])
+        // ->get();
+
+        if ($request->actualReceive > $total2 - $total1) {
+            return redirect()->back()->with('errors', 'Actual Receive Cant Greater Than Less Receive!');
+        }
         $transaction = new Transaction();
 
         $transaction->po_number_transaction = $request->poNumber;
@@ -161,7 +209,7 @@ class StockController extends Controller
 
         $transaction->save();
 
-        return redirect()->back()->with('success', 'Success!');
+        return redirect()->back()->with('success', 'Success!', compact('sumtrans', 'check'));
 
     }
 }

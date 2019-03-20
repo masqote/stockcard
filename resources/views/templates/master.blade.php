@@ -323,8 +323,8 @@
                           <span>Master Database</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="master_code">Master Code</a></li>
-                          <li><a  href="group_master_code">Group Master Code</a></li>
+                          <li><a  href="/master_code">Master Code</a></li>
+                          <li><a  href="/group_master_code">Group Master Code</a></li>
                           <li><a  href="language_switch_bar.html">Language Switch Bar</a></li>
                           <li><a  href="email_template.html" target="_blank">Email Template</a></li>
                       </ul>

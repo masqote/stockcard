@@ -110,7 +110,6 @@
 
 <script>
 	$(document).ready(function(e){
-<<<<<<< HEAD
 		$(function () {
 	  		$("select").select2();
 		});

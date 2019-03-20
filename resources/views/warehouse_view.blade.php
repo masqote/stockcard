@@ -22,9 +22,14 @@
 	                          		</div>
 	                         	</div>
 	                          </header>
-	                          @if(session()->has('success'))
+	                         @if(session()->has('success'))
 									    <div class="alert alert-success">
 									        {{ session()->get('success') }}
+									    </div>
+									@endif
+							 @if(session()->has('errors'))
+									    <div class="alert alert-danger">
+									        {{ session()->get('errors') }}
 									    </div>
 									@endif
 	                          	<div class="panel-body bio-graph-info">
@@ -85,7 +90,7 @@
 		                                      		}
 	                                      		
 	                                      		@endphp
-	                                      			<br /><br /><br />
+	                                      			
 	                                      			{{$row->item_code}} - {{$row->item_name}}
 	                                      			<span class="badge" style="background: green;">{{$row->qty}}</span>
 	                                      			<br><br>

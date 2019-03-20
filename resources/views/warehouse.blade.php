@@ -8,6 +8,7 @@
 	                      <section class="panel">
 	                          <header class="panel-heading">
 	                              Group Master Code
+
 	                          </header>
 	                          <div class="panel-body">
 	                          		<div class="adv-table">
@@ -20,23 +21,40 @@
                                           <th>Supplier Name</th>
                                           <th>Location</th>
                                           <th>Remarks</th>
+                                          <th>Status</th>
                                           <th>Action</th>
                                       </tr>
                                       </thead>
                                       <tbody>
+
                                       	@php
                                       		$no = 1;
                                       	@endphp
-                                      	@foreach($warehouse as $row)
+
+                                        @foreach($sumtrans as $asd)
+                                          {{$asd->po_number}}
+                                          {{$asd->total}}
+                                        @endforeach
+                                        <br>
+
+                                        @foreach($sumdetail as $ha)
+                                          {{$ha->po_number_transaction}}
+                                          {{$ha->total}}
+                                        @endforeach
+
+                                      	@foreach($sumtrans as $row)
                                       <tr class="gradeX">
                                       	  <td>{{$no++}}</td>
-                                          <td>{{$row->po_number}}</td>
+                                          <td>{{$row->po_number_transaction}}</td>
                                           <td>{{$row->date_purchasing}}</td>
                                           <td>{{$row->supplier_name}}</td>
                                           <td>{{$row->location}}</td>
                                           <td>{{$row->remarks}}</td>
                                           <td>
-                                          	<a href="/warehouse/{{$row->po_number}}"><button class="btn btn-primary">View</button></a>
+                                            {{$row->total}}
+                                          </td> 
+                                          <td>
+                                          	<a href="/warehouse/{{$row->po_number_transaction}}"><button class="btn btn-primary">View</button></a>
                                           </td>
                                       </tr>
                                       	@endforeach
@@ -49,6 +67,7 @@
                                           <th>Supplier Name</th>
                                           <th>Location</th>
                                           <th>Remarks</th>
+                                          <th>Status</th>
                                           <th>Action</th>
                                       </tr>
                                       </tfoot>
